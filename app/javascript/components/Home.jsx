@@ -17,6 +17,13 @@ export default () => (
         >
           View Users
         </Link>
+        <Link
+          to="/contents"
+          className="btn btn-lg custom-button"
+          role="button"
+        >
+          View Contents
+        </Link>
       </div>
     </div>
   </div>
