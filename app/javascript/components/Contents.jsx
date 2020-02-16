@@ -1,50 +1,50 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-class Users extends React.Component {
+class Contents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: []
+      contents: []
     };
   }
 
   componentDidMount() {
-    const url = "/api/v1/users/index";
+    const url = "/api/v1/contents/index";
     fetch(url)
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-      throw new Error("Network response was not ok.");
-    })
-    .then(response => this.setState({ users: response }))
-    .catch(() => this.props.history.push("/"));
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Network response was not ok.");
+      })
+      .then(response => this.setState({ contents: response }))
+      .catch(() => this.props.history.push("/"));
   }
 
   render() {
-    const { users } = this.state;
-    const allUsers = users.map((user, index) => (
+    const { contents } = this.state;
+    const allContents = contents.map((content, index) => (
       <div key={index} className="col-md-6 col-lg-4">
         <div className="card mb-4">
           <img
-            src={user.image}
+            src={content.image}
             className="card-img-top"
-            alt={`${user.name} image`}
+            alt={`${content.name} image`}
           />
           <div className="card-body">
-            <h5 className="card-title">{user.name}</h5>
-            <Link to={`/user/${user.id}`} className="btn custom-button">
-              View User
+            <h5 className="card-title">{content.name}</h5>
+            <Link to={`/content/${content.id}`} className="btn custom-button">
+              View content
             </Link>
           </div>
         </div>
       </div>
     ));
-    const noUser = (
+    const noContent = (
       <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
         <h4>
-          No users yet. Why not <Link to="/new_user">create one</Link>
+          No contents yet. Why not <Link to="/new_content">create one</Link>
         </h4>
       </div>
     );
@@ -53,9 +53,9 @@ class Users extends React.Component {
       <>
         <section className="jumbotron jumbotron-fluid text-center">
           <div className="container py-5">
-            <h1 className="display-4">Users</h1>
+            <h1 className="display-4">contents for every occasion</h1>
             <p className="lead text-muted">
-              We’ve pulled together our most popular users, our latest
+              We’ve pulled together our most popular contents, our latest
               additions, and our editor’s picks, so there’s sure to be something
               tempting for you to try.
             </p>
@@ -64,12 +64,12 @@ class Users extends React.Component {
         <div className="py-5">
           <main className="container">
             <div className="text-right mb-3">
-              <Link to="/userrails s --binding=127.0.0.1" className="btn custom-button">
-                Create New User
+              <Link to="/content" className="btn custom-button">
+                Create New Content
               </Link>
             </div>
             <div className="row">
-              {users.length > 0 ? allUsers : noUser}
+              {contents.length > 0 ? allContents : noContent}
             </div>
             <Link to="/" className="btn btn-link">
               Home
@@ -80,4 +80,4 @@ class Users extends React.Component {
     );
   }
 }
-export default Users;
+export default Contents;
