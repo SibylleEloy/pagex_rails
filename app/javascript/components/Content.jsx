@@ -17,7 +17,7 @@ class Content extends React.Component {
       }
     } = this.props;
 
-    const url = `/api/v1/show/${id}`;
+    const url = `/api/v1/contents/${id}`;
 
     fetch(url)
       .then(response => {

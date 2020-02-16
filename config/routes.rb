@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'contents/index'
       post 'contents/create'
-      get '/show/:id', to: 'contents#show'
+      get '/contents/:id', to: 'contents#show'
       delete '/destroy/:id', to: 'contents#destroy'
     end
   end
