@@ -16,7 +16,7 @@ class User extends React.Component {
       }
     } = this.props;
 
-    const url = `/api/v1/show/${id}`;
+    const url = `/api/v1/users/${id}`;
 
     fetch(url)
       .then(response => {
